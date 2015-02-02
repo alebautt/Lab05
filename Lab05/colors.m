@@ -72,45 +72,33 @@ NSTimer *timer;
 }
 
 - (IBAction)slBlink:(id)sender {
-       self.lblColors.alpha = 0;
-    [UIView animateWithDuration: 1 delay:0.5 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{self.lblColors.alpha = 1;} completion: nil];
-    valorsl = self.slBlink.value;
+    
    // self.lblColors.text = [NSString stringWithFormat:@"%ld", (long)valorsl];
     
     [timer invalidate];
     contador = 0;
 
-    
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(my_timer) userInfo:nil repeats: YES];
+    if(self.slBlink.value>0){
+        
+  timer = [NSTimer scheduledTimerWithTimeInterval:self.slBlink.value target:self selector:@selector(my_timer) userInfo:nil repeats: YES];
+    }
+    else{
+        
+        self.lblColors.alpha=1;
+        
+    }
     
 }
 
 - (void) my_timer {
-    
-    if(contador < valorsl){
-    
-        
-        NSLog([NSString stringWithFormat:@"%ld", (long)contador]);
-        contador++;
+    if(self.lblColors.alpha==1){
+        self.lblColors.alpha=0;
     }
-    if(contador >= valorsl)
-    {
-        
-        NSLog(@"Terminado");
-       [timer invalidate];
-      //  [timer finalize];
-        
-       // timer invalidate];
-        timer = nil;
-
-        
-       [self.lblColors.layer removeAllAnimations];
-        self.lblColors.alpha = 1;
-
+    else{
+        self.lblColors.alpha=1;
     }
-   
-   // NSLog([NSString stringWithFormat:@"%ld", (long)contador]);
     
+      
 }
 
 @end
