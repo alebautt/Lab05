@@ -60,15 +60,9 @@ NSTimer *timer;
     self.lblColors.backgroundColor = [UIColor colorWithRed:(intRed/255.0) green:(intGreen/255.0) blue:(intBlue/255.0) alpha:1.0f];}
 
 - (IBAction)slBlue:(id)sender {
-    
-   // self.lblColors.text = [NSString stringWithFormat:@"%0.0f", self.slBlue.value];
-    
     intBlue = self.slBlue.value;
-    
-    
-   // self.lblColors.text = [NSString stringWithFormat:@"%ld", (long)intBlue];
-    
     self.lblColors.backgroundColor = [UIColor colorWithRed:(intRed/255.0) green:(intGreen/255.0) blue:(intBlue/255.0) alpha:1.0f];
+
 }
 
 - (IBAction)slBlink:(id)sender {
